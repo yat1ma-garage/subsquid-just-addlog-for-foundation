@@ -15,6 +15,8 @@ task: https://github.com/subsquid-quests/foundation-subgraph-migration
 * Seems like it depends on how the archive server is busy and how fetching data is large.
 * It takes over a day to be full synced on my PC.
 
+Like `archive request failed, will retry in 60 secs` errors will be occurred during syncing.
+
 ## Foundation subgraph uses DataSource Template
 
 There is [DataSource Template](https://thegraph.com/docs/en/developing/creating-a-subgraph/#data-source-templates) in subgraph.
