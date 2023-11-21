@@ -9,6 +9,15 @@ task: https://github.com/subsquid-quests/foundation-subgraph-migration
 * Subscribing 9 topics with `address: undefined`
 * No decoding or handling them
 
+## Usage
+
+```bash
+npm ci
+sqd up
+sqd process &
+sqd serve
+```
+
 ## How long it takes to be synced
 
 * The ETA fluctuates between 5 - 400 hours.
