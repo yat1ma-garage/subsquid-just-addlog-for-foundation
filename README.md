@@ -11,7 +11,7 @@ task: https://github.com/subsquid-quests/foundation-subgraph-migration
 
 ## How long it takes to be synced
 
-* The ETA moves between 10 - 400 hours.
+* The ETA fluctuates between 5 - 400 hours.
 * Seems like it depends on how the archive server is busy and how fetching data is large.
 * It takes over a day to be full synced on my PC.
 
