@@ -8,6 +8,7 @@ import {
     Log as _Log,
     Transaction as _Transaction,
 } from '@subsquid/evm-processor'
+import * as abi from './abi/CollectionContract'
 
 export const processor = new EvmBatchProcessor()
     .setDataSource({
@@ -22,8 +23,8 @@ export const processor = new EvmBatchProcessor()
             // https://docs.subsquid.io/deploy-squid/env-variables/
             url: assertNotNull(process.env.RPC_ENDPOINT),
             // More RPC connection options at https://docs.subsquid.io/evm-indexing/configuration/initialization/#set-data-source
-            rateLimit: 10
-        }
+            rateLimit: 10,
+        },
     })
     .setFinalityConfirmation(75)
     .setFields({
@@ -34,10 +35,24 @@ export const processor = new EvmBatchProcessor()
         },
     })
     .setBlockRange({
-        from: 0,
+        from: 13531391,
     })
-    .addTransaction({
-        to: ['0x0000000000000000000000000000000000000000'],
+    .addLog({
+        // we have to set undefined because there is no dynamic template in squid-sdk
+        // address: new Array(50_000).fill("0x3b3ee1931dc30c1957379fac9aba94d1c48a5405"),
+        address: undefined,
+        topic0: [
+            // needed topics in foundation migration
+            abi.events.Approval.topic,
+            abi.events.ApprovalForAll.topic,
+            abi.events.BaseURIUpdated.topic,
+            abi.events.Minted.topic,
+            abi.events.Transfer.topic,
+            abi.events.TokenCreatorPaymentAddressSet.topic,
+            abi.events.NFTOwnerMigrated.topic,
+            abi.events.PaymentAddressMigrated.topic,
+            abi.events.SelfDestruct.topic,
+        ],
     })
 
 export type Fields = EvmBatchProcessorFields<typeof processor>
